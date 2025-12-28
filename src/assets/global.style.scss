@@ -1,0 +1,26 @@
+// Modules styles - @forward must be at the top
+@forward "../modules/home/adapters/input/index.scss";
+@forward "../modules/books/adapters/input/index.scss";
+@forward "../modules/landing/adapters/input/index.scss";
+@forward "../modules/checkout/adapters/input/index.scss";
+@forward "../modules/cart/adapters/input/index.scss";
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.app {
+  min-height: 100vh;
+  width: 100%;
+}
+
