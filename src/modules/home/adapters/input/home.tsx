@@ -1,9 +1,13 @@
-import { useBookServices } from '@common/context/di-context';
+import {
+  useBookServices,
+  useCategoryServices,
+} from '@common/context/di-context';
 import { useQuery } from '@tanstack/react-query';
 import { Link } from 'react-router-dom';
 
 export const Home = () => {
   const bookService = useBookServices();
+  const categoriesService = useCategoryServices();
 
   const {
     data: books,
@@ -12,6 +16,15 @@ export const Home = () => {
   } = useQuery({
     queryKey: ['books'],
     queryFn: () => bookService.getBooks(),
+  });
+
+  const {
+    data: categories,
+    isLoading: loadingCategories,
+    error: categoriesError,
+  } = useQuery({
+    queryKey: ['categories'],
+    queryFn: () => categoriesService.getCategories(),
   });
 
   if (isLoading) {
@@ -36,6 +49,7 @@ export const Home = () => {
 
       <div className='home__main-container'>
         <aside className='home__main-container__side-menu'>
+          {JSON.stringify(categories)}
           <span>Drama</span>
           <span>Acción</span>
         </aside>
