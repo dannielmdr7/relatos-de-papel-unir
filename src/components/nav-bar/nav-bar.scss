@@ -83,6 +83,11 @@
           display: flex;
           align-items: center;
           gap: 15px;
+
+          &__tooltip {
+            padding: 2px 4px;
+            font-size: 15px;
+          }
         }
 
         &__personal {
@@ -100,12 +105,8 @@
               text-decoration: underline;
             }
           }
-
-          &__language {
-          }
         }
       }
     }
   }
 }
-

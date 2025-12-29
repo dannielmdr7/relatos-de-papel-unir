@@ -58,7 +58,9 @@ export const NavBar = () => {
                   <i className={`fa-solid ${item.icon}`}></i>
                 </TooltipTrigger>
                 <TooltipContent>
-                  <p> {item.tooltipText} </p>
+                  <p className='nav-bar__container__content__options__actions__tooltip'>
+                    {item.tooltipText}
+                  </p>
                 </TooltipContent>
               </Tooltip>
             ))}
@@ -81,4 +83,3 @@ export const NavBar = () => {
     </div>
   );
 };
-
