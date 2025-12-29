@@ -1,0 +1,22 @@
+.side-menu {
+  &__container {
+    &__title {
+      font-size: var(--font-size-title);
+      font-weight: bold;
+    }
+
+    &__categories {
+      display: flex;
+      flex-direction: column;
+      font-size: var(--font-size-subtitle);
+
+      &__category {
+        cursor: pointer;
+        width: fit-content;
+        &:hover {
+          text-decoration: underline;
+        }
+      }
+    }
+  }
+}

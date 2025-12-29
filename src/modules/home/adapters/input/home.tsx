@@ -1,13 +1,12 @@
+import { SideMenu } from '@/components/side-menu/side-menu';
 import {
-  useBookServices,
-  useCategoryServices,
+  useBookServices
 } from '@common/context/di-context';
 import { useQuery } from '@tanstack/react-query';
 import { Link } from 'react-router-dom';
 
 export const Home = () => {
   const bookService = useBookServices();
-  const categoriesService = useCategoryServices();
 
   const {
     data: books,
@@ -18,14 +17,7 @@ export const Home = () => {
     queryFn: () => bookService.getBooks(),
   });
 
-  const {
-    data: categories,
-    isLoading: loadingCategories,
-    error: categoriesError,
-  } = useQuery({
-    queryKey: ['categories'],
-    queryFn: () => categoriesService.getCategories(),
-  });
+  
 
   if (isLoading) {
     return (
@@ -49,9 +41,7 @@ export const Home = () => {
 
       <div className='home__main-container'>
         <aside className='home__main-container__side-menu'>
-          {JSON.stringify(categories)}
-          <span>Drama</span>
-          <span>Acción</span>
+          <SideMenu />
         </aside>
         <div className='home__main-container__books'>
           <div className='home__main-container__books__books-grid'>
