@@ -184,6 +184,26 @@ El repositorio está configurado con:
 
 La configuración es **local** (solo para este repositorio) y no afecta otros proyectos en tu PC.
 
+### ⚠️ Compatibilidad Windows/Linux
+
+**Problema conocido**: En Linux se pueden crear archivos con nombres reservados de Windows (como `nul`, `CON`, `PRN`, etc.), lo que causa errores al hacer `git pull` en Windows.
+
+**Solución implementada**:
+- ✅ Hook de Git (`post-merge`) que elimina automáticamente estos archivos después de cada pull
+- ✅ Scripts manuales en `scripts/` para limpiar archivos problemáticos si es necesario
+- ✅ `.gitignore` actualizado para prevenir commits accidentales
+
+**Si encuentras el error `error: invalid path 'nul'`**:
+```bash
+# Linux/Mac/Git Bash
+./scripts/fix-windows-reserved-names.sh
+
+# Windows PowerShell
+.\scripts\fix-windows-reserved-names.ps1
+```
+
+Luego haz commit de los cambios: `git commit -m "Remove Windows reserved filenames"`
+
 ## 📚 Convenciones
 
 - **Arquitectura Hexagonal**: Separación clara entre dominio, aplicación y adaptadores
