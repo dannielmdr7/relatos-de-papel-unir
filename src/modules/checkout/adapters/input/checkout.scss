@@ -47,6 +47,10 @@
     &__form-section {
       grid-column: span 7;
 
+      &__paiment-card {
+        padding: 10px;
+      }
+
       &__section-title {
         font-size: var(--font-size-subtitle);
         font-weight: 600;
@@ -87,6 +91,9 @@
 
     &__summary-section {
       grid-column: span 5;
+      &__summary-card {
+        padding: 10px;
+      }
 
       &__section-title {
         font-size: var(--font-size-subtitle);

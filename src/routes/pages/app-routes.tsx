@@ -11,9 +11,9 @@ import { Landing } from '@modules/landing';
 import { Checkout } from '@modules/checkout';
 import { BookDetail } from '@modules/books';
 import { NavBar } from '@/components/nav-bar/nav-bar';
+import { Cart } from '@/modules/cart';
 
-const ROUTES_WITHOUT_NAVBAR = ['/home','/checkout'];
-
+const ROUTES_WITHOUT_NAVBAR = ['/home'];
 
 const Layout = () => {
   const location = useLocation();
@@ -49,6 +49,10 @@ const AppRoutes = () => {
             {
               path: '/checkout',
               element: <Checkout />,
+            },
+            {
+              path: '/cart',
+              element: <Cart />,
             },
             {
               path: '*',

@@ -6,14 +6,15 @@ import {
   TooltipTrigger,
 } from '@/components/ui/tooltip';
 import { TooltipProvider } from '@radix-ui/react-tooltip';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { useEffect } from 'react';
 import { useCart } from '@/modules/cart';
+import { BookOpen, MapPinCheck } from 'lucide-react';
 
 export const NavBar = () => {
   const { items } = useCart();
-
   const path = useLocation();
+  const navigate = useNavigate();
 
   useEffect(() => {
     console.log('Daniel location', { path });
@@ -37,17 +38,32 @@ export const NavBar = () => {
     },
   ];
 
-  
+  const goToCart = () => {
+    navigate('/cart');
+  };
+
+  const goToHome = () => {
+    navigate('/books');
+  };
 
   return (
     <div className='nav-bar__container__content'>
       <div className='nav-bar__container__content__information'>
-        <div className='nav-bar__container__content__information__site-name'>
-          <span>busca libre</span>
+        <div
+          className='nav-bar__container__content__information__site-name'
+          onClick={() => {
+            goToHome();
+          }}
+        >
+          <BookOpen />
+          <span>Relatos de papel</span>
         </div>
         <div className='nav-bar__container__content__information__site-direction'>
-          <span>ingresa tu</span>
-          <span>direccion</span>
+          <MapPinCheck />
+          <div className='nav-bar__container__content__information__site-direction__text'>
+            <span>ingresa tu</span>
+            <span>direccion</span>
+          </div>
         </div>
         <div className='nav-bar__container__content__information__search'>
           <Input
@@ -58,7 +74,12 @@ export const NavBar = () => {
         </div>
       </div>
       <div className='nav-bar__container__content__options'>
-        <div className=' nav-bar-icon nav-bar__container__content__options__car'>
+        <div
+          className=' nav-bar-icon nav-bar__container__content__options__car'
+          onClick={() => {
+            goToCart();
+          }}
+        >
           {items.length > 0 && (
             <div className='nav-bar__container__content__options__car__items'>
               {items.length}

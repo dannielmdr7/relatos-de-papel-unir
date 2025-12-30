@@ -50,11 +50,9 @@ export const Checkout = () => {
 
   return (
     <div className='checkout'>
-      <h1 className='checkout__title'>Checkout</h1>
-
       <div className='checkout__main-container'>
         <div className='checkout__main-container__form-section'>
-          <Card>
+          <Card className='checkout__main-container__form-section__paiment-card'>
             <CardHeader>
               <CardTitle className='checkout__main-container__form-section__section-title'>
                 Datos de Envío
@@ -252,7 +250,7 @@ export const Checkout = () => {
         </div>
 
         <div className='checkout__main-container__summary-section'>
-          <Card>
+          <Card className='checkout__main-container__summary-section__summary-card'>
             <CardHeader>
               <CardTitle className='checkout__main-container__summary-section__section-title'>
                 Resumen del Pedido

@@ -11,9 +11,11 @@ import { Link, useParams } from 'react-router-dom';
 import { reviewRepositoryMockData } from '../output/review-data.repository.mock';
 import './book-detail.scss';
 import {
-  AuthorCard, BookInfoTable,
+  AuthorCard,
+  BookInfoTable,
   BookPriceSection,
-  BookReviewsSection, Rating
+  BookReviewsSection,
+  Rating,
 } from './components';
 
 export const BookDetail = () => {
