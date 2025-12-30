@@ -27,10 +27,10 @@ export const Checkout = () => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    console.log('Daniel Procesando pago...', formData);
+    console.log('Procesando pago...', formData);
   };
 
-  if (items.length > 0) {
+  if (items.length === 0) {
     return (
       <div className='checkout'>
         <h1 className='checkout__title'>Checkout</h1>
@@ -50,6 +50,7 @@ export const Checkout = () => {
 
   return (
     <div className='checkout'>
+      <h1 className='checkout__title'>Checkout</h1>
 
       <div className='checkout__main-container'>
         <div className='checkout__main-container__form-section'>

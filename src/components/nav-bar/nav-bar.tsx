@@ -8,8 +8,10 @@ import {
 import { TooltipProvider } from '@radix-ui/react-tooltip';
 import { useLocation } from 'react-router-dom';
 import { useEffect } from 'react';
+import { useCart } from '@/modules/cart';
 
 export const NavBar = () => {
+  const { items } = useCart();
 
   const path = useLocation();
 
@@ -34,6 +36,9 @@ export const NavBar = () => {
       tooltipText: 'Opiniones de clientes',
     },
   ];
+
+  
+
   return (
     <div className='nav-bar__container__content'>
       <div className='nav-bar__container__content__information'>
@@ -54,9 +59,11 @@ export const NavBar = () => {
       </div>
       <div className='nav-bar__container__content__options'>
         <div className=' nav-bar-icon nav-bar__container__content__options__car'>
-          <div className='nav-bar__container__content__options__car__items'>
-            7
-          </div>
+          {items.length > 0 && (
+            <div className='nav-bar__container__content__options__car__items'>
+              {items.length}
+            </div>
+          )}
           <i className='fa-solid fa-cart-shopping'></i>
         </div>
         <div className='nav-bar__container__content__options__actions'>
