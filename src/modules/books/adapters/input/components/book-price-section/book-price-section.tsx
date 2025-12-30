@@ -1,31 +1,32 @@
-import { BookModel } from '../../../../domain/book.model';
-import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
+import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
-import {
-  formatPrice,
-  formatAvailability,
-  calculateDiscount,
-} from '../../utils/format.utils';
 import { Heart, Share2 } from 'lucide-react';
+import { BookModel } from '../../../../domain/book.model';
+import {
+  calculateDiscount,
+  formatAvailability,
+  formatPrice,
+} from '../../utils/format.utils';
 
 interface BookPriceSectionProps {
   book: BookModel;
+  className?: string;
+  isItemInCar: boolean;
   onAddToCart: () => void;
   onAddToWishlist?: () => void;
   onShare?: () => void;
-  className?: string;
 }
 
 export const BookPriceSection = ({
   book,
+  isItemInCar,
   onAddToCart,
   onAddToWishlist,
   onShare,
   className = '',
 }: BookPriceSectionProps) => {
-  // For demo purposes, let's assume there's a discount if availability is high
-  const originalPrice = book.price * 1.1; // Simulated 10% discount
+  const originalPrice = book.price * 1.1;
   const discount = calculateDiscount(originalPrice, book.price);
   const hasDiscount = discount > 0;
 
@@ -87,14 +88,14 @@ export const BookPriceSection = ({
             className='book-price-section__buy-button'
             size='lg'
           >
-            Comprar
+            {isItemInCar ? 'Eliminar del carrito' : 'Agregar al carrito'}
           </Button>
           <div className='book-price-section__shipping-info'>
-            Se enviará desde nuestra bodega entre el{' '}
+            Se enviará desde nuestra bodega entre el
             <span className='book-price-section__shipping-link'>
               Martes 30 de Diciembre
-            </span>{' '}
-            y el{' '}
+            </span>
+            y el
             <span className='book-price-section__shipping-link'>
               Viernes 02 de Enero
             </span>

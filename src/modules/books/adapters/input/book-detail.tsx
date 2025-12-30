@@ -1,27 +1,27 @@
-import { useQuery } from '@tanstack/react-query';
-import { useParams, Link } from 'react-router-dom';
-import { useBookServices } from '@common/context/di-context';
-import { useCart } from '@modules/cart/context/cart-context';
-import { ArrowLeft } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
-import { Skeleton } from '@/components/ui/skeleton';
 import { Separator } from '@/components/ui/separator';
-import { Rating } from './components';
+import { Skeleton } from '@/components/ui/skeleton';
+import { useBookServices } from '@common/context/di-context';
+import { useCart } from '@modules/cart/context/cart-context';
+import { useQuery } from '@tanstack/react-query';
+import { ArrowLeft } from 'lucide-react';
+import { useMemo } from 'react';
+import { Link, useParams } from 'react-router-dom';
+import { reviewRepositoryMockData } from '../output/review-data.repository.mock';
+import './book-detail.scss';
 import {
+  AuthorCard,
   BookInfoTable,
   BookPriceSection,
   BookReviewsSection,
-  AuthorCard,
+  Rating,
 } from './components';
-import { reviewRepositoryMockData } from '../output/review-data.repository.mock';
-import { useMemo } from 'react';
-import './book-detail.scss';
 
 export const BookDetail = () => {
   const { id } = useParams<{ id: string }>();
   const bookService = useBookServices();
-  const { addToCart } = useCart();
+  const { addToCart, items, removeFromCart } = useCart();
 
   const {
     data: book,
@@ -44,8 +44,19 @@ export const BookDetail = () => {
     return sum / reviews.length;
   }, [reviews]);
 
+  // Use derived state instead of effect to avoid unnecessary renders
+  const isBookInCar = useMemo(() => {
+    if (!items || !book) return false;
+    return items.some(item => item.book.id === book.id);
+  }, [items, book]);
+
   const handleAddToCart = () => {
     if (book) {
+      if (items.some(item => item.book.id === book.id)) {
+        removeFromCart(book.id);
+        return;
+      }
+
       addToCart(book);
     }
   };
@@ -152,6 +163,7 @@ export const BookDetail = () => {
           {/* Price Section */}
           <BookPriceSection
             book={book}
+            isItemInCar={isBookInCar}
             onAddToCart={handleAddToCart}
             onAddToWishlist={handleAddToWishlist}
             onShare={handleShare}
