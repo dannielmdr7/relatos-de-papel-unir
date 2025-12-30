@@ -1,6 +1,9 @@
 // Breakpoints - available globally
 @forward './breakpoints';
 
+// Common components styles - must be before modules
+@forward './styles/book-card.scss';
+
 // Modules styles - @forward must be at the top
 @forward '../modules/home/adapters/input/index.scss';
 @forward '../modules/books/adapters/input/index.scss';

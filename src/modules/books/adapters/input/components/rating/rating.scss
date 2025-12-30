@@ -28,18 +28,18 @@
     }
 
     &--filled {
-      fill: #facc15;
-      color: #facc15;
+      fill: var(--color-yellow-400);
+      color: var(--color-yellow-400);
     }
 
     &--half {
-      fill: #fef3c7;
-      color: #facc15;
+      fill: var(--color-yellow-200);
+      color: var(--color-yellow-400);
     }
 
     &--empty {
-      fill: #e5e7eb;
-      color: #e5e7eb;
+      fill: var(--color-gray-300);
+      color: var(--color-gray-300);
     }
   }
 
