@@ -6,8 +6,17 @@ import {
   TooltipTrigger,
 } from '@/components/ui/tooltip';
 import { TooltipProvider } from '@radix-ui/react-tooltip';
+import { useLocation } from 'react-router-dom';
+import { useEffect } from 'react';
 
 export const NavBar = () => {
+
+  const path = useLocation();
+
+  useEffect(() => {
+    console.log('Daniel location', { path });
+  }, []);
+
   const options: { id: number; icon: string; tooltipText: string }[] = [
     {
       id: 1,
