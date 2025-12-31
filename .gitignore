@@ -9,6 +9,7 @@ lerna-debug.log*
 
 node_modules
 dist
+scripts
 dist-ssr
 *.local
 
@@ -31,3 +32,12 @@ src/environments/.env.*
 *.njsproj
 *.sln
 *.sw?
+
+# Windows reserved filenames (problemas de compatibilidad Linux/Windows)
+# Estos nombres están reservados en Windows y causan errores en git pull
+nul
+CON
+PRN
+AUX
+COM[1-9]
+LPT[1-9]

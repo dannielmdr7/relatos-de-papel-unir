@@ -31,7 +31,8 @@
       "@modules/*": ["src/modules/*"],
       "@utils/*": ["src/utils/*"],
       "@common/*": ["src/common/*"],
-      "@app/*": ["src/*"]
+      "@app/*": ["src/*"],
+      "@assets/*": ["src/assets/*"]
     }
   },
   "include": ["src"]
