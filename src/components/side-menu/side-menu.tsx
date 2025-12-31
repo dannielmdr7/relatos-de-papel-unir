@@ -7,8 +7,6 @@ export const SideMenu = () => {
 
   const {
     data: categories,
-    isLoading: loadingCategories,
-    error: categoriesError,
   } = useQuery({
     queryKey: ['categories'],
     queryFn: () => categoriesService.getCategories(),
